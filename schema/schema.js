@@ -79,8 +79,8 @@ const mutation = new GraphQLObjectType({
         companyId: { type: GraphQLString }
       },
       resolve( parentValue, args ) {
-        const { firstName ,age } = args;
-        return axios.post('http://localhost:3000/users',{ firstName , age })
+        const { firstName ,age , companyId} = args;
+        return axios.post('http://localhost:3000/users',{ firstName , age, companyId })
           .then( res => res.data );
       }
     },
@@ -109,10 +109,9 @@ const mutation = new GraphQLObjectType({
           .then(resp => {
             console.log(resp);
             return resp.data;
-          } );
+          });
       }
     }
-
   })
 });
 
